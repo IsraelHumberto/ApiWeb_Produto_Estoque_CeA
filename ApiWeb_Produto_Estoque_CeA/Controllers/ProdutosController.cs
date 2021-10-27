@@ -11,47 +11,47 @@ namespace ApiWeb_Produto_Estoque_CeA.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EstoqueController : ControllerBase
+    public class ProdutosController : ControllerBase
     {
-        private readonly EstoqueContext _context;
+        private readonly ProdutoContext _context;
 
-        public EstoqueController(EstoqueContext context)
+        public ProdutosController(ProdutoContext context)
         {
             _context = context;
         }
 
-        // GET: api/Estoque
+        // GET: api/Produtos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Estoque>>> GetEstoqueItems()
+        public async Task<ActionResult<IEnumerable<Produto>>> GetProdutoItems()
         {
-            return await _context.EstoqueItems.ToListAsync();
+            return await _context.ProdutoItems.ToListAsync();
         }
 
-        // GET: api/Estoque/5
+        // GET: api/Produtos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Estoque>> GetEstoque(int id)
+        public async Task<ActionResult<Produto>> GetProduto(int id)
         {
-            var estoque = await _context.EstoqueItems.FindAsync(id);
+            var produto = await _context.ProdutoItems.FindAsync(id);
 
-            if (estoque == null)
+            if (produto == null)
             {
                 return NotFound();
             }
 
-            return estoque;
+            return produto;
         }
 
-        // PUT: api/Estoque/5
+        // PUT: api/Produtos/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEstoque(int id, Estoque estoque)
+        public async Task<IActionResult> PutProduto(int id, Produto produto)
         {
-            if (id != estoque.ID)
+            if (id != produto.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(estoque).State = EntityState.Modified;
+            _context.Entry(produto).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +59,7 @@ namespace ApiWeb_Produto_Estoque_CeA.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EstoqueExists(id))
+                if (!ProdutoExists(id))
                 {
                     return NotFound();
                 }
@@ -72,36 +72,36 @@ namespace ApiWeb_Produto_Estoque_CeA.Controllers
             return NoContent();
         }
 
-        // POST: api/Estoque
+        // POST: api/Produtos
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Estoque>> PostEstoque(Estoque estoque)
+        public async Task<ActionResult<Produto>> PostProduto(Produto produto)
         {
-            _context.EstoqueItems.Add(estoque);
+            _context.ProdutoItems.Add(produto);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetEstoque", new { id = estoque.ID }, estoque);
+            return CreatedAtAction("GetProduto", new { id = produto.ID }, produto);
         }
 
-        // DELETE: api/Estoque/5
+        // DELETE: api/Produtos/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEstoque(int id)
+        public async Task<IActionResult> DeleteProduto(int id)
         {
-            var estoque = await _context.EstoqueItems.FindAsync(id);
-            if (estoque == null)
+            var produto = await _context.ProdutoItems.FindAsync(id);
+            if (produto == null)
             {
                 return NotFound();
             }
 
-            _context.EstoqueItems.Remove(estoque);
+            _context.ProdutoItems.Remove(produto);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool EstoqueExists(int id)
+        private bool ProdutoExists(int id)
         {
-            return _context.EstoqueItems.Any(e => e.ID == id);
+            return _context.ProdutoItems.Any(e => e.ID == id);
         }
     }
 }

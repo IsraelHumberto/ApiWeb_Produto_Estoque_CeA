@@ -31,7 +31,7 @@ namespace ApiWeb_Produto_Estoque_CeA
         {
 
             services.AddControllers();
-            services.AddDbContext<EstoqueContext>(opt => opt.UseInMemoryDatabase("EstoqueList"));
+            services.AddDbContext<ProdutoContext>(opt => opt.UseInMemoryDatabase("ProdutoList"));
         //    services.AddSwaggerGen(c =>
         //    {
         //        c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiWeb_Produto_Estoque_CeA", Version = "v1" });

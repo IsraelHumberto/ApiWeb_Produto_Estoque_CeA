@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApiWeb_Produto_Estoque_CeA.Models
 {
-    public class EstoqueContext : DbContext
+    public class ProdutoContext :DbContext
     {
-        public EstoqueContext(DbContextOptions<EstoqueContext> options) : base(options)
+        public ProdutoContext(DbContextOptions<ProdutoContext> options)
+            : base(options)
         {
         }
 
-        public DbSet<Estoque> EstoqueItems { get; set; }
-
+        public DbSet<Produto> ProdutoItems { get; set; }
     }
 }

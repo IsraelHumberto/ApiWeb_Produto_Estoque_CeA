@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ApiWeb_Produto_Estoque_CeA.Models
 {
-    public class Estoque
+    public class Produto
     {
         public int ID { get; set; }
         public string nome { get; set; }
@@ -14,6 +14,7 @@ namespace ApiWeb_Produto_Estoque_CeA.Models
         public string local { get; set; }
         public string fornecedor { get; set; }
         public int quantidade { get; set; }
-        public string imagem { get; set; }
+        public string image { get; set; }
+
     }
 }
