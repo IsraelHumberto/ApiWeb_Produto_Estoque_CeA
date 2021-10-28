@@ -13,6 +13,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ApiWeb_Produto_Estoque_CeA.Models;
+using System;
+using Microsoft.Extensions.Logging;
 
 
 namespace ApiWeb_Produto_Estoque_CeA
@@ -29,13 +31,22 @@ namespace ApiWeb_Produto_Estoque_CeA
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //MySQL
+            var serverVersion = new MySqlServerVersion(new System.Version(8, 0, 27));
+            var connection = Configuration["ConnectionMySql:MySqlConnectionString"];
+            services.AddDbContext<ProdutoContext>(opt => opt.UseMySql(connection, serverVersion)
+                .LogTo(Console.WriteLine, LogLevel.Information)
+                .EnableSensitiveDataLogging()
+                .EnableDetailedErrors()
+            );
+            //MySQL - END
 
             services.AddControllers();
             services.AddDbContext<ProdutoContext>(opt => opt.UseInMemoryDatabase("ProdutoList"));
-        //    services.AddSwaggerGen(c =>
-        //    {
-        //        c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiWeb_Produto_Estoque_CeA", Version = "v1" });
-        //    });
+            //services.AddSwaggerGen(c =>
+            //{
+                //c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiWeb_Produto_Estoque_CeA", Version = "v1" });
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
