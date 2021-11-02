@@ -28,6 +28,8 @@ namespace ApiWeb_Produto_Estoque_CeA.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     quantidade = table.Column<int>(type: "int", nullable: false),
                     image = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                     codigo = table.Column<int>(type: "int", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>

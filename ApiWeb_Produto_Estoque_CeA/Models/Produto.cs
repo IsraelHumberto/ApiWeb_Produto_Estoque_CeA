@@ -15,6 +15,7 @@ namespace ApiWeb_Produto_Estoque_CeA.Models
         public string fornecedor { get; set; }
         public int quantidade { get; set; }
         public string image { get; set; }
+        public int codigo { get; set; }
 
     }
 }
