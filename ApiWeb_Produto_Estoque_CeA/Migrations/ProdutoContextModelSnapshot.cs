@@ -43,6 +43,9 @@ namespace ApiWeb_Produto_Estoque_CeA.Migrations
                     b.Property<string>("tipo")
                         .HasColumnType("longtext");
 
+                    b.Property<int>("codigo")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.ToTable("ProdutoItems");
