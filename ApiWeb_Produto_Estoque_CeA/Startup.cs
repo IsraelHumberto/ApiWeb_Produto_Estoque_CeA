@@ -32,12 +32,14 @@ namespace ApiWeb_Produto_Estoque_CeA
         public void ConfigureServices(IServiceCollection services)
         {
             //MySQL
-            var serverVersion = new MySqlServerVersion(new System.Version(8, 0, 27));
+            services.AddCors();
+            var serverVersion = new MySqlServerVersion(new System.Version(7, 4, 12));
             var connection = Configuration["ConnectionMySql:MySqlConnectionString"];
             services.AddDbContext<ProdutoContext>(opt => opt.UseMySql(connection, serverVersion)
                 .LogTo(Console.WriteLine, LogLevel.Information)
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors()
+                
             );
             //MySQL - END
 

@@ -2,14 +2,16 @@
 using ApiWeb_Produto_Estoque_CeA.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ApiWeb_Produto_Estoque_CeA.Migrations
 {
     [DbContext(typeof(ProdutoContext))]
-    partial class ProdutoContextModelSnapshot : ModelSnapshot
+    [Migration("20211102180458_versao02")]
+    partial class versao02
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,9 +44,6 @@ namespace ApiWeb_Produto_Estoque_CeA.Migrations
 
                     b.Property<string>("tipo")
                         .HasColumnType("longtext");
-
-                    b.Property<int>("codigo")
-                        .HasColumnType("int");
 
                     b.HasKey("ID");
 
