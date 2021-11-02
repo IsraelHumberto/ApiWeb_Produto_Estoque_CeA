@@ -14,5 +14,6 @@ namespace ApiWeb_Produto_Estoque_CeA.Models
         }
 
         public DbSet<Produto> ProdutoItems { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
     }
 }
